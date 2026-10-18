@@ -14,8 +14,12 @@ const {
   canonicalPath = '/',
 } = Astro.props;
 
-const canonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
-const ogImageUrl = new URL('/logo-smakologia.png', siteConfig.siteUrl).toString();
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const siteOrigin = Astro.site ? Astro.site.toString() : siteConfig.siteUrl;
+const canonicalUrl = new URL(canonicalPath.replace(/^\//, ''), siteOrigin).toString();
+const ogImageUrl = new URL(`${baseUrl}logo-smakologia.png`, siteOrigin).toString();
 const jsonLd = buildSiteJsonLd();
 ---
 
@@ -27,8 +31,8 @@ const jsonLd = buildSiteJsonLd();
 <meta name="author" content={siteConfig.brandName} />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <link rel="canonical" href={canonicalUrl} />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
+<link rel="sitemap" href={`${baseUrl}sitemap-index.xml`} />
 
 <meta name="geo.region" content="PL-24" />
 <meta name="geo.placename" content="Będzin" />

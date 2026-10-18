@@ -2,8 +2,12 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+const site = process.env.ASTRO_SITE || 'https://smakologia.com';
+const base = process.env.ASTRO_BASE || undefined;
+
 export default defineConfig({
-  site: 'https://smakologia.com',
+  site,
+  base,
   output: 'static',
   compressHTML: true,
   trailingSlash: 'ignore',
