@@ -11,6 +11,9 @@ export default defineConfig({
   output: 'static',
   compressHTML: true,
   trailingSlash: 'ignore',
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [
     sitemap({
       i18n: {
