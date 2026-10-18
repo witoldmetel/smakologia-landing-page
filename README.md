@@ -69,3 +69,5 @@ To enable the external `dietdoctor.pl` online booking buttons across the page, s
 | `pnpm run lint` | Check code quality with Biome |
 | `pnpm run lint:fix` | Auto-fix linting and formatting issues with Biome |
 | `pnpm run check-unused-files` | Detect unused files, exports, and dependencies with Knip |
+| `pnpm run check-seo` | Build production output and verify `robots.txt`, XML sitemaps, canonical/geo meta tags, and Schema.org JSON-LD |
+| `pnpm run check-lighthouse` | Build and run full Google Lighthouse CI audit locally (`lighthouserc.json`) |
