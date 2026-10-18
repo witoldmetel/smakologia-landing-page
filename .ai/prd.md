@@ -17,7 +17,7 @@
   - Chorzów
   - Dąbrowa Górnicza
   - Siewierz
-- **Phone:** `(+48) 881 22 11 29` (`tel:+48881221129`)
+- **Phone:** `(+48) 881 221 129` (`tel:+48881221129`)
 - **Email:** `smakoologia@gmail.com` (`mailto:smakoologia@gmail.com`)
 - **Social Media:**
   - **Facebook:** `https://www.facebook.com/Smakologiadietetyk`
@@ -41,7 +41,7 @@
 1. **Sticky Header & Navigation (`#top`)**
    - Smakologia logo
    - Anchor links: *O mnie*, *Specjalizacje*, *Jak pracujemy*, *Cennik*, *FAQ*, *Kontakt*
-   - Primary CTA button: `Zadzwoń: 881 22 11 29` (plus optional `Umów wizytę` link when `dietdoctor.pl` URL is enabled)
+   - Primary CTA button: `Zadzwoń: 881 221 129` (plus optional `Umów wizytę` link when `dietdoctor.pl` URL is enabled)
 2. **Hero Section (`#hero`)**
    - Primary SEO H1 targeting core keywords: *Dietetyk kliniczny i psychodietetyk w Będzinie oraz online*
    - Value proposition emphasizing sustainable habit change, clinical expertise, and tasty individualized menus

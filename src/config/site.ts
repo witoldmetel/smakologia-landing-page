@@ -103,7 +103,7 @@ export const siteConfig = {
     ],
   },
   contact: {
-    phoneDisplay: '(+48) 881 22 11 29',
+    phoneDisplay: '(+48) 881 221 129',
     phoneHref: 'tel:+48881221129',
     phoneE164: '+48881221129',
     email: 'smakoologia@gmail.com',

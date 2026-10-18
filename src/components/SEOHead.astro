@@ -18,9 +18,10 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const siteOrigin = Astro.site ? Astro.site.toString() : siteConfig.siteUrl;
-const canonicalUrl = new URL(canonicalPath.replace(/^\//, ''), siteOrigin).toString();
+const normalizedPath = canonicalPath === '/' ? baseUrl : `${baseUrl}${canonicalPath.replace(/^\//, '')}`;
+const canonicalUrl = new URL(normalizedPath, siteOrigin).toString();
 const ogImageUrl = new URL(`${baseUrl}logo-smakologia.png`, siteOrigin).toString();
-const jsonLd = buildSiteJsonLd();
+const jsonLd = buildSiteJsonLd(canonicalUrl, ogImageUrl);
 ---
 
 <meta charset="utf-8" />

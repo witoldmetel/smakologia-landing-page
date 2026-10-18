@@ -1,12 +1,16 @@
 import type { Graph } from 'schema-dts';
 import { siteConfig } from '../config/site';
 
-export function buildSiteJsonLd(): Graph {
-  const businessId = `${siteConfig.siteUrl}/#dietitian`;
-  const personId = `${siteConfig.siteUrl}/#specialist`;
-  const websiteId = `${siteConfig.siteUrl}/#website`;
-  const webpageId = `${siteConfig.siteUrl}/#webpage`;
-  const faqId = `${siteConfig.siteUrl}/#faqpage`;
+export function buildSiteJsonLd(
+  pageUrl: string = siteConfig.siteUrl,
+  logoUrl: string = `${siteConfig.siteUrl}/logo-smakologia.png`,
+): Graph {
+  const cleanUrl = pageUrl.replace(/\/$/, '');
+  const businessId = `${cleanUrl}/#dietitian`;
+  const personId = `${cleanUrl}/#specialist`;
+  const websiteId = `${cleanUrl}/#website`;
+  const webpageId = `${cleanUrl}/#webpage`;
+  const faqId = `${cleanUrl}/#faqpage`;
 
   return {
     '@context': 'https://schema.org',
@@ -14,7 +18,7 @@ export function buildSiteJsonLd(): Graph {
       {
         '@type': 'WebSite',
         '@id': websiteId,
-        url: siteConfig.siteUrl,
+        url: pageUrl,
         name: siteConfig.brandName,
         description: siteConfig.seo.description,
         inLanguage: 'pl-PL',
@@ -33,11 +37,11 @@ export function buildSiteJsonLd(): Graph {
         name: siteConfig.legalName,
         alternateName: 'Smakologia Dietetyk Będzin',
         description: siteConfig.seo.description,
-        url: siteConfig.siteUrl,
+        url: pageUrl,
         telephone: siteConfig.contact.phoneE164,
         email: siteConfig.contact.email,
-        image: `${siteConfig.siteUrl}/logo-smakologia.png`,
-        logo: `${siteConfig.siteUrl}/logo-smakologia.png`,
+        image: logoUrl,
+        logo: logoUrl,
         sameAs: [siteConfig.socials.facebook, siteConfig.socials.instagram],
         priceRange: '140 PLN - 350 PLN',
         currenciesAccepted: 'PLN',
@@ -110,7 +114,7 @@ export function buildSiteJsonLd(): Graph {
       {
         '@type': 'WebPage',
         '@id': webpageId,
-        url: siteConfig.siteUrl,
+        url: pageUrl,
         name: siteConfig.seo.title,
         description: siteConfig.seo.description,
         inLanguage: 'pl-PL',

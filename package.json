@@ -10,9 +10,9 @@
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "astro": "ASTRO_TELEMETRY_DISABLED=1 astro",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
-    "lint": "biome check .",
-    "lint:fix": "biome check --write .",
-    "format": "biome format --write .",
+    "lint": "biome lint src",
+    "lint:fix": "biome check --write src",
+    "format": "biome format --write src",
     "check-unused-files": "knip",
     "check-updates": "pnpm dlx npm-check-updates"
   },

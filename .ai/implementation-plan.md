@@ -8,7 +8,7 @@
 
 ## Phase 2: Central Configuration & SEO Engine
 1. Create `src/config/site.ts` containing all strongly-typed business data:
-   - NAP details (`ul. Gzichowska 121, 42-500 Będzin`, `(+48) 881 22 11 29`, `smakoologia@gmail.com`)
+   - NAP details (`ul. Gzichowska 121, 42-500 Będzin`, `(+48) 881 221 129`, `smakoologia@gmail.com`)
    - Toggleable `bookingUrl` (`dietdoctor.pl` integration ready to enable with a single flag)
    - Specialist profile ("O mnie") & credentials
    - Specializations (Dietetyka kliniczna, Psychodietetyka, Redukcja masy ciała, Współpraca stacjonarna i online)
