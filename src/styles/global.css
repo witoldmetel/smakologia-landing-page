@@ -93,6 +93,17 @@
   }
 }
 
+@keyframes reveal-fade-up {
+  from {
+    opacity: 0.15;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -102,17 +113,14 @@
     font-family: var(--font-sans);
   }
 
-  .reveal-on-scroll {
-    opacity: 0;
-    transform: translate3d(0, 18px, 0);
-    transition:
-      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal-on-scroll {
+        animation: reveal-fade-up linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 24%;
+      }
+    }
   }
 
   .animate-float-slow {
@@ -122,11 +130,6 @@
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
-    }
-    .reveal-on-scroll {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
     }
     *,
     *::before,

@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import logoSmakologia from '../assets/images/logo-smakologia.png';
+import logoSmakologiaUrl from '../assets/images/logo-smakologia.webp?inline';
 import { siteConfig } from '../config/site';
 ---
 
@@ -18,14 +17,13 @@ import { siteConfig } from '../config/site';
               <span class="rounded-full bg-cream-50/15 px-3.5 py-1 text-xs font-bold tracking-wider uppercase ring-1 ring-cream-50/25">
                 Smakologia • Będzin
               </span>
-              <Image
-                src={logoSmakologia}
+              <img
+                src={logoSmakologiaUrl}
                 alt="Smakologia — Dietetyk kliniczny"
-                width={112}
-                height={112}
-                format="webp"
-                quality="high"
+                width="112"
+                height="112"
                 loading="lazy"
+                decoding="async"
                 class="h-12 w-12 rounded-full bg-cream-50 object-contain p-0.5 shadow-sm"
               />
             </div>

@@ -62,8 +62,6 @@ import { siteConfig } from '../config/site';
 <script is:inline>
   (() => {
     const items = document.querySelectorAll('details[data-faq-item]');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
 
     items.forEach((details) => {
       const summary = details.querySelector('summary');
@@ -71,6 +69,7 @@ import { siteConfig } from '../config/site';
       if (!summary || !wrapper) return;
 
       summary.addEventListener('click', (event) => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         event.preventDefault();
         const isExpanded = details.getAttribute('data-expanded') === 'true';
 

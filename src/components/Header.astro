@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import logoSmakologia from '../assets/images/logo-smakologia.png';
+import logoSmakologiaUrl from '../assets/images/logo-smakologia.webp?inline';
 import { siteConfig } from '../config/site';
 ---
 
@@ -14,15 +13,12 @@ import { siteConfig } from '../config/site';
       class="group relative z-50 flex items-center gap-3 rounded-lg focus-visible:outline-sage-700"
       aria-label="Smakologia — powrót na górę strony"
     >
-      <Image
-        src={logoSmakologia}
+      <img
+        src={logoSmakologiaUrl}
         alt="Smakologia — Dietetyk kliniczny i psychodietetyk Będzin"
-        width={112}
-        height={112}
-        format="webp"
-        quality="high"
-        loading="eager"
-        fetchpriority="high"
+        width="112"
+        height="112"
+        decoding="async"
         class="h-14 w-14 rounded-full object-contain shadow-xs"
       />
       <div class="flex flex-col">
