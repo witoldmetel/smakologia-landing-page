@@ -1,0 +1,36 @@
+name: CI Quality Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Biome, Knip, Typecheck & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js & Corepack (pnpm)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          corepack: true
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Biome linter & formatter check
+        run: pnpm run lint
+
+      - name: Run Knip unused files/dependencies check
+        run: pnpm run check-unused-files
+
+      - name: Run Astro & TypeScript check
+        run: pnpm run check
+
+      - name: Build static site
+        run: pnpm run build

@@ -1,0 +1,54 @@
+---
+import { siteConfig } from '../config/site';
+import { buildSiteJsonLd } from '../utils/jsonLd';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = siteConfig.seo.title,
+  description = siteConfig.seo.description,
+  canonicalPath = '/',
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
+const ogImageUrl = new URL('/logo-smakologia.svg', siteConfig.siteUrl).toString();
+const jsonLd = buildSiteJsonLd();
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={siteConfig.seo.keywords.join(', ')} />
+<meta name="author" content={siteConfig.brandName} />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<meta name="geo.region" content="PL-24" />
+<meta name="geo.placename" content="Będzin" />
+<meta name="geo.position" content={`${siteConfig.contact.geo.latitude};${siteConfig.contact.geo.longitude}`} />
+<meta name="ICBM" content={`${siteConfig.contact.geo.latitude}, ${siteConfig.contact.geo.longitude}`} />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={siteConfig.locale} />
+<meta property="og:site_name" content={siteConfig.brandName} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:alt" content="Smakologia — Dietetyk kliniczny i psychodietetyk Będzin" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<meta name="theme-color" content="#1E4330" />
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

@@ -1,0 +1,130 @@
+---
+import { siteConfig } from '../config/site';
+---
+
+<section
+  id="cennik"
+  aria-labelledby="pricing-heading"
+  class="border-y border-cream-300/70 bg-cream-50 py-16 sm:py-24"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-xs font-bold tracking-widest text-clay-700 uppercase">
+        Przejrzyste zasady współpracy
+      </p>
+      <h2
+        id="pricing-heading"
+        class="mt-2 font-serif text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl"
+      >
+        Cennik konsultacji i planów żywieniowych
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-800 sm:text-lg">
+        Inwestycja w Twoje zdrowie, lepsze samopoczucie i trwałe nawyki żywieniowe. Konsultacje odbywają się stacjonarnie w Będzinie oraz online.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-3">
+      {
+        siteConfig.pricing.map((tier) => (
+          <article
+            class:list={[
+              'flex flex-col justify-between rounded-3xl p-7 sm:p-8',
+              tier.featured
+                ? 'border-2 border-sage-700 bg-sage-900 text-cream-50 shadow-xl'
+                : 'border border-cream-300 bg-cream-100/80 text-ink-900 shadow-xs',
+            ]}
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <span
+                  class:list={[
+                    'rounded-full px-3.5 py-1 text-xs font-bold',
+                    tier.featured
+                      ? 'bg-cream-50 text-sage-900'
+                      : 'bg-cream-200 text-ink-800',
+                  ]}
+                >
+                  {tier.duration}
+                </span>
+                {tier.badge && (
+                  <span class="rounded-full bg-clay-600 px-3.5 py-1 text-xs font-bold text-cream-50">
+                    {tier.badge}
+                  </span>
+                )}
+              </div>
+
+              <h3
+                class:list={[
+                  'mt-5 font-serif text-2xl font-bold',
+                  tier.featured ? 'text-cream-50' : 'text-ink-900',
+                ]}
+              >
+                {tier.name}
+              </h3>
+
+              <p
+                class:list={[
+                  'mt-2 text-sm leading-relaxed',
+                  tier.featured ? 'text-cream-200' : 'text-ink-800',
+                ]}
+              >
+                {tier.subtitle}
+              </p>
+
+              <div class="mt-6 flex items-baseline gap-2 border-y border-current/15 py-5">
+                <span class="font-serif text-4xl font-extrabold tracking-tight">
+                  {tier.price}
+                </span>
+                <span
+                  class:list={[
+                    'text-xs font-semibold',
+                    tier.featured ? 'text-cream-200' : 'text-ink-700',
+                  ]}
+                >
+                  / spotkanie lub pakiet
+                </span>
+              </div>
+
+              <ul class="mt-6 space-y-3 text-sm">
+                {tier.features.map((feature) => (
+                  <li class="flex items-start gap-2.5">
+                    <span
+                      class:list={[
+                        'mt-0.5 font-bold',
+                        tier.featured ? 'text-cream-100' : 'text-sage-700',
+                      ]}
+                      aria-hidden="true"
+                    >
+                      ✓
+                    </span>
+                    <span class={tier.featured ? 'text-cream-100' : 'text-ink-800'}>
+                      {feature.trim()}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-4">
+              <a
+                href={siteConfig.contact.phoneHref}
+                class:list={[
+                  'inline-flex w-full items-center justify-center gap-2 rounded-2xl px-5 py-3.5 text-sm font-bold transition-colors',
+                  tier.featured
+                    ? 'bg-cream-50 text-sage-900 hover:bg-cream-200'
+                    : 'bg-sage-700 text-cream-50 hover:bg-sage-800',
+                ]}
+              >
+                <span>Umów termin: {siteConfig.contact.phoneDisplay}</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 text-center text-xs text-ink-700 sm:text-sm">
+      {siteConfig.pricingDisclaimer}
+    </p>
+  </div>
+</section>

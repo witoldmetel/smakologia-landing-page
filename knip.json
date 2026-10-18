@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreDependencies": [
+    "@astrojs/check",
+    "@fontsource-variable/fraunces",
+    "@fontsource-variable/plus-jakarta-sans",
+    "sharp",
+    "tailwindcss"
+  ]
+}

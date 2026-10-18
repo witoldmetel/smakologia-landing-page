@@ -1,0 +1,35 @@
+{
+  "name": "smakologia-landing-page",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@12.14.0",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "astro": "ASTRO_TELEMETRY_DISABLED=1 astro",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "check-unused-files": "knip",
+    "check-updates": "pnpm dlx npm-check-updates"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource-variable/fraunces": "5.1.1",
+    "@fontsource-variable/plus-jakarta-sans": "5.1.1",
+    "@tailwindcss/vite": "4.0.0",
+    "astro": "7.4.0",
+    "schema-dts": "1.1.2",
+    "sharp": "0.33.5",
+    "tailwindcss": "4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "@biomejs/biome": "2.5.15",
+    "knip": "6.41.0",
+    "typescript": "5.7.3"
+  }
+}

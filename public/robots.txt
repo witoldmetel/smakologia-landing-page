@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smakologia.com/sitemap-index.xml
