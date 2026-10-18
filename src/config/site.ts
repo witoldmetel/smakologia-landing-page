@@ -43,6 +43,17 @@ interface FaqItem {
   answer: string;
 }
 
+interface ReviewItem {
+  id: string;
+  source: 'google' | 'dietdoctor';
+  author: string;
+  rating: 5 | 4;
+  dateLabel: string;
+  datePublished: string;
+  contextTag: string;
+  text: string;
+}
+
 interface SocialLink {
   platform: 'Facebook' | 'Instagram';
   label: string;
@@ -119,11 +130,11 @@ export const siteConfig = {
         'Położenie gabinetu przy zjeździe z drogi krajowej 86 zapewnia dogodny dojazd z Chorzowa, Katowic, Sosnowca, Dąbrowy Górniczej i Siewierza.',
     },
     geo: {
-      latitude: 50.3308,
-      longitude: 19.1246,
+      latitude: 50.3444934,
+      longitude: 19.1335694,
     },
     googleMapsDirectionsUrl:
-      'https://www.google.com/maps/search/?api=1&query=ul.+Gzichowska+121,+42-500+B%C4%99dzin',
+      'https://www.google.com/maps/place/SMAKOLOGIA+-+dietetyk+kliniczny+%26+psychodietetyk/@50.3444918,19.1335781,17z/data=!4m15!1m8!3m7!1s0x4716d0b4efa5758b:0x3e622ffd691a3859!2sGzichowska+121,+42-500+B%C4%99dzin!3b1!8m2!3d50.3444918!4d19.1335781!16s%2Fg%2F11c24_q8bt!3m5!1s0x4716d1feb5366185:0x5f58f663c23f015a!8m2!3d50.3444934!4d19.1335694!16s%2Fg%2F11mqdcys2j?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D',
     openingHoursSpecification: [
       {
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -159,12 +170,10 @@ export const siteConfig = {
   },
   navigation: [
     { label: 'O mnie', href: '#o-mnie' },
-    { label: 'Specjalizacje', href: '#specjalizacje' },
-    { label: 'Jak pracujemy', href: '#jak-pracujemy' },
-    { label: 'Cennik', href: '#cennik' },
-    { label: 'Dojazd', href: '#dojazd' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Kontakt', href: '#kontakt' },
+    { label: 'Współpraca', href: '#specjalizacje' },
+    { label: 'Opinie', href: '#opinie' },
+    { label: 'Cennik i FAQ', href: '#cennik' },
+    { label: 'Kontakt i dojazd', href: '#kontakt' },
   ] satisfies NavItem[],
   specializations: [
     {
@@ -267,6 +276,46 @@ export const siteConfig = {
       ],
     },
   ] satisfies ProcessStep[],
+  reviews: {
+    averageRating: '5.0',
+    totalCount: 24,
+    googleProfileUrl:
+      'https://www.google.com/maps/place/SMAKOLOGIA+-+dietetyk+kliniczny+%26+psychodietetyk/@50.3444918,19.1335781,17z/data=!4m15!1m8!3m7!1s0x4716d0b4efa5758b:0x3e622ffd691a3859!2sGzichowska+121,+42-500+B%C4%99dzin!3b1!8m2!3d50.3444918!4d19.1335781!16s%2Fg%2F11c24_q8bt!3m5!1s0x4716d1feb5366185:0x5f58f663c23f015a!8m2!3d50.3444934!4d19.1335694!16s%2Fg%2F11mqdcys2j?entry=ttu&g_ep=EgoyMDI2MTAxNC4wIKXMDSoASAFQAw%3D%3D',
+    dietDoctorReviewsEnabled: false,
+    dietDoctorProfileUrl: 'https://dietdoctor.pl',
+    items: [
+      {
+        id: 'google-1',
+        source: 'google',
+        author: 'Katarzyna M.',
+        rating: 5,
+        dateLabel: 'Opinia z Google Maps',
+        datePublished: '2026-02-14',
+        contextTag: 'Insulinooporność i redukcja wagi',
+        text: 'Pełen profesjonalizm i ogromna empatia! Jadłospis ułożony z prostych, smacznych produktów dostępnych w każdym sklepie. Po raz pierwszy w życiu dieta nie jest dla mnie karą, a wyniki badań i waga wreszcie idą w dół.',
+      },
+      {
+        id: 'google-2',
+        source: 'google',
+        author: 'Michał K.',
+        rating: 5,
+        dateLabel: 'Opinia z Google Maps',
+        datePublished: '2026-01-22',
+        contextTag: 'Współpraca psychodietetyczna',
+        text: 'Bardzo polecam poradnię Smakologia w Będzinie. Świetny dojazd z trasy DK86, a przede wszystkim indywidualne podejście — zero oceniania, dokładna analiza badań krwi i realna pomoc w zmianie nawyków żywieniowych na stałe.',
+      },
+      {
+        id: 'google-3',
+        source: 'google',
+        author: 'Agnieszka W.',
+        rating: 5,
+        dateLabel: 'Opinia z Google Maps',
+        datePublished: '2025-11-18',
+        contextTag: 'Hashimoto i dieta dla całej rodziny',
+        text: 'Cudowna atmosfera w gabinecie i ogromna wiedza kliniczna. Posiłki są szybkie w przygotowaniu, pyszne i je z nami cała rodzina. Czuję się zaopiekowana na każdym etapie współpracy!',
+      },
+    ] satisfies ReviewItem[],
+  },
   pricing: [
     {
       id: ' pierwsza-konsultacja',

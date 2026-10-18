@@ -5,13 +5,17 @@ import { siteConfig } from '../config/site';
 <section
   id="dojazd"
   aria-labelledby="local-reach-heading"
-  class="py-16 sm:py-24"
+  class="bg-cream-100 pt-4 pb-16 sm:pt-6 sm:pb-24"
 >
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="rounded-3xl border border-cream-300 bg-sage-800 p-8 text-cream-50 shadow-lg sm:p-12">
-      <div class="grid items-center gap-10 lg:grid-cols-12">
+    <div class="reveal-on-scroll relative overflow-hidden rounded-3xl border border-sage-400/35 bg-gradient-to-br from-sage-800 via-sage-700 to-sage-900 p-8 text-cream-50 shadow-xl shadow-sage-900/15 sm:p-12">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-sage-400/20 blur-3xl"
+      ></div>
+      <div class="relative grid items-center gap-10 lg:grid-cols-12">
         <div class="lg:col-span-5">
-          <span class="inline-flex items-center rounded-full bg-cream-50/15 px-3.5 py-1 text-xs font-bold tracking-wider text-cream-100 uppercase">
+          <span class="inline-flex items-center rounded-full bg-cream-50/15 px-3.5 py-1 text-xs font-bold tracking-wider text-cream-50 uppercase ring-1 ring-cream-50/25">
             Lokalizacja przy węźle DK86
           </span>
           <h2
@@ -20,10 +24,10 @@ import { siteConfig } from '../config/site';
           >
             Dietetyk Będzin, Katowice, Sosnowiec i całe Zagłębie
           </h2>
-          <p class="mt-4 text-base leading-relaxed text-cream-100">
+          <p class="mt-4 text-base leading-relaxed text-sage-50">
             {siteConfig.contact.address.locationHighlight}
           </p>
-          <p class="mt-4 text-sm leading-relaxed text-cream-200">
+          <p class="mt-4 text-sm leading-relaxed text-sage-100">
             Gabinet przy <strong>{siteConfig.contact.address.fullDisplay}</strong> pozwala ominąć zakorkowane centra miast i dotrzeć na wizytę w kilkanaście minut z całej aglomeracji.
           </p>
 
@@ -32,10 +36,10 @@ import { siteConfig } from '../config/site';
               href={siteConfig.contact.googleMapsDirectionsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 rounded-xl bg-cream-50 px-5 py-3 text-sm font-bold text-sage-900 transition-colors hover:bg-cream-200"
+              class="group inline-flex items-center gap-2 rounded-xl bg-cream-50 px-5 py-3 text-sm font-bold text-sage-900 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-sage-100"
             >
               <span>Wyznacz trasę w Google Maps</span>
-              <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+              <svg class="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10" />
               </svg>
             </a>
@@ -46,16 +50,16 @@ import { siteConfig } from '../config/site';
           <div class="grid gap-4 sm:grid-cols-2">
             {
               siteConfig.commuteCities.map((item) => (
-                <div class="rounded-2xl border border-cream-50/15 bg-sage-900/75 p-5">
+                <div class="rounded-2xl border border-cream-50/20 bg-sage-900/65 p-5 backdrop-blur-xs transition-all duration-300 hover:-translate-y-1 hover:border-sage-200/50 hover:bg-sage-900/85">
                   <div class="flex items-center justify-between gap-2">
                     <h3 class="font-serif text-lg font-bold text-cream-50">
                       {item.city}
                     </h3>
-                    <span class="rounded-lg bg-cream-50 px-2.5 py-1 text-xs font-extrabold text-sage-900">
+                    <span class="rounded-lg bg-sage-100 px-2.5 py-1 text-xs font-extrabold text-sage-900">
                       {item.driveTime}
                     </span>
                   </div>
-                  <p class="mt-2 text-xs leading-relaxed text-cream-200">
+                  <p class="mt-2 text-xs leading-relaxed text-sage-100">
                     {item.routeNote}
                   </p>
                 </div>

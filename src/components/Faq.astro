@@ -8,7 +8,7 @@ import { siteConfig } from '../config/site';
   class="border-t border-cream-300/70 bg-cream-50 py-16 sm:py-24"
 >
   <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
+    <div class="reveal-on-scroll text-center">
       <p class="text-xs font-bold tracking-widest text-clay-700 uppercase">
         Najczęstsze pytania
       </p>
@@ -27,15 +27,17 @@ import { siteConfig } from '../config/site';
       {
         siteConfig.faqs.map((faq, index) => (
           <details
-            class="group rounded-2xl border border-cream-300 bg-cream-100/70 p-6 transition-colors open:bg-cream-50 open:shadow-sm"
+            data-faq-item
+            data-expanded={index === 0 ? 'true' : 'false'}
+            class="faq-item reveal-on-scroll group rounded-2xl border border-sage-400/30 bg-cream-100/75 p-6 transition-all duration-300 hover:border-sage-500 open:border-sage-500 open:bg-cream-50 open:shadow-md open:shadow-sage-900/5"
             open={index === 0}
           >
             <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left">
-              <h3 class="font-serif text-lg font-bold text-ink-900 sm:text-xl">
+              <h3 class="font-serif text-lg font-bold text-ink-900 transition-colors group-hover:text-sage-700 sm:text-xl">
                 {faq.question}
               </h3>
               <span
-                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-800 transition-transform group-open:rotate-180"
+                class="faq-chevron flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sage-100 text-sage-800 transition-all duration-300 group-hover:bg-sage-200"
                 aria-hidden="true"
               >
                 <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -43,12 +45,54 @@ import { siteConfig } from '../config/site';
                 </svg>
               </span>
             </summary>
-            <p class="mt-4 border-t border-cream-200 pt-4 text-sm leading-relaxed text-ink-800 sm:text-base">
-              {faq.answer}
-            </p>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="mt-4 border-t border-cream-200 pt-4 text-sm leading-relaxed text-ink-800 sm:text-base">
+                  {faq.answer}
+                </p>
+              </div>
+            </div>
           </details>
         ))
       }
     </div>
   </div>
 </section>
+
+<script is:inline>
+  (() => {
+    const items = document.querySelectorAll('details[data-faq-item]');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    items.forEach((details) => {
+      const summary = details.querySelector('summary');
+      const wrapper = details.querySelector('.faq-answer-wrapper');
+      if (!summary || !wrapper) return;
+
+      summary.addEventListener('click', (event) => {
+        event.preventDefault();
+        const isExpanded = details.getAttribute('data-expanded') === 'true';
+
+        if (isExpanded) {
+          details.setAttribute('data-expanded', 'false');
+          const onEnd = (e) => {
+            if (e.target !== wrapper) return;
+            wrapper.removeEventListener('transitionend', onEnd);
+            if (details.getAttribute('data-expanded') === 'false') {
+              details.removeAttribute('open');
+            }
+          };
+          wrapper.addEventListener('transitionend', onEnd);
+        } else {
+          details.setAttribute('open', '');
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              details.setAttribute('data-expanded', 'true');
+            });
+          });
+        }
+      });
+    });
+  })();
+</script>

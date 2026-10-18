@@ -42,7 +42,11 @@ export function buildSiteJsonLd(
         email: siteConfig.contact.email,
         image: logoUrl,
         logo: logoUrl,
-        sameAs: [siteConfig.socials.facebook, siteConfig.socials.instagram],
+        sameAs: [
+          siteConfig.socials.facebook,
+          siteConfig.socials.instagram,
+          siteConfig.contact.googleMapsDirectionsUrl,
+        ],
         priceRange: '140 PLN - 350 PLN',
         currenciesAccepted: 'PLN',
         paymentAccepted: 'Gotówka, Przelew, BLIK',
@@ -78,6 +82,28 @@ export function buildSiteJsonLd(
         founder: {
           '@id': personId,
         },
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: siteConfig.reviews.averageRating,
+          bestRating: '5',
+          worstRating: '1',
+          reviewCount: siteConfig.reviews.totalCount,
+        },
+        review: siteConfig.reviews.items.map((item) => ({
+          '@type': 'Review',
+          author: {
+            '@type': 'Person',
+            name: item.author,
+          },
+          datePublished: item.datePublished,
+          reviewBody: item.text,
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: String(item.rating),
+            bestRating: '5',
+            worstRating: '1',
+          },
+        })),
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
           name: 'Usługi dietetyczne i psychodietetyczne Smakologia',

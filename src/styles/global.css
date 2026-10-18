@@ -58,28 +58,39 @@
   --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-serif: 'Fraunces Variable', 'Fraunces Fallback', Georgia, Cambria, 'Times New Roman', Times, serif;
 
-  --color-cream-50: #FCFBF8;
-  --color-cream-100: #FAF7F2;
-  --color-cream-200: #F2ECE1;
-  --color-cream-300: #E4D9C6;
+  --color-cream-50: #FFFFFF;
+  --color-cream-100: #F8FBFA;
+  --color-cream-200: #EDF4F2;
+  --color-cream-300: #D5E5E3;
 
-  --color-sage-50: #F2F7F4;
-  --color-sage-100: #DFECE4;
-  --color-sage-200: #BFD7C8;
-  --color-sage-600: #2D5A43;
-  --color-sage-700: #1E4330;
-  --color-sage-800: #153123;
-  --color-sage-900: #0E2218;
+  --color-sage-50: #EEF8F8;
+  --color-sage-100: #D8F0F0;
+  --color-sage-200: #B2E1E2;
+  --color-sage-400: #38A9AD;
+  --color-sage-500: #24888C;
+  --color-sage-600: #176A6E;
+  --color-sage-700: #115559;
+  --color-sage-800: #0C3F42;
+  --color-sage-900: #07292B;
 
-  --color-clay-50: #FDF5F2;
-  --color-clay-100: #FAE6DE;
-  --color-clay-600: #B34820;
-  --color-clay-700: #933816;
+  --color-clay-50: #FFF5F0;
+  --color-clay-100: #FFE6DA;
+  --color-clay-600: #BF4321;
+  --color-clay-700: #9A3316;
 
-  --color-ink-900: #161F1A;
-  --color-ink-800: #25332B;
-  --color-ink-700: #38493F;
-  --color-ink-600: #4B5E53;
+  --color-ink-900: #102122;
+  --color-ink-800: #213739;
+  --color-ink-700: #365052;
+  --color-ink-600: #4B676A;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
 }
 
 @layer base {
@@ -91,9 +102,31 @@
     font-family: var(--font-sans);
   }
 
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
+    }
+    .reveal-on-scroll {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
     }
     *,
     *::before,
@@ -106,11 +139,35 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-sage-700);
+    outline: 3px solid var(--color-sage-600);
     outline-offset: 3px;
   }
 
   summary::-webkit-details-marker {
     display: none;
+  }
+
+  .faq-answer-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.28s ease;
+  }
+
+  .faq-answer-inner {
+    overflow: hidden;
+  }
+
+  .faq-item[data-expanded="true"] .faq-answer-wrapper {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .faq-item[data-expanded="true"] .faq-chevron {
+    transform: rotate(180deg);
+    background-color: var(--color-sage-700);
+    color: var(--color-cream-50);
   }
 }
