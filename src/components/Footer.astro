@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logoSmakologia from '../assets/images/logo-smakologia.png';
 import { siteConfig } from '../config/site';
 
 const currentYear = new Date().getFullYear();
@@ -8,12 +10,25 @@ const currentYear = new Date().getFullYear();
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
     <div class="grid gap-8 md:grid-cols-12">
       <div class="md:col-span-5">
-        <p class="font-serif text-2xl font-bold tracking-wide text-cream-50">
-          SMAKOLOGIA
-        </p>
-        <p class="mt-1 text-xs font-bold tracking-widest text-cream-200 uppercase">
-          Dietetyk kliniczny i psychodietetyk • Będzin & Online
-        </p>
+        <div class="flex items-center gap-3.5">
+          <Image
+            src={logoSmakologia}
+            alt="Logo Smakologia — Dietetyk kliniczny"
+            width={112}
+            height={112}
+            format="webp"
+            loading="lazy"
+            class="h-14 w-14 shrink-0 rounded-full bg-cream-50 object-contain p-0.5"
+          />
+          <div>
+            <p class="font-serif text-2xl font-bold tracking-wide text-cream-50">
+              SMAKOLOGIA
+            </p>
+            <p class="mt-0.5 text-xs font-bold tracking-widest text-cream-200 uppercase">
+              Dietetyk kliniczny i psychodietetyk • Będzin & Online
+            </p>
+          </div>
+        </div>
         <p class="mt-4 max-w-sm text-sm leading-relaxed text-cream-200">
           Indywidualne plany żywieniowe, dietoterapia w jednostkach chorobowych oraz wsparcie psychodietetyczne. Gabinet w Będzinie przy zjeździe z trasy DK86.
         </p>

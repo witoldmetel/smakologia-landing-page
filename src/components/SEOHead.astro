@@ -15,7 +15,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(canonicalPath, siteConfig.siteUrl).toString();
-const ogImageUrl = new URL('/logo-smakologia.svg', siteConfig.siteUrl).toString();
+const ogImageUrl = new URL('/logo-smakologia.png', siteConfig.siteUrl).toString();
 const jsonLd = buildSiteJsonLd();
 ---
 
